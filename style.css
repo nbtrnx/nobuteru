@@ -27,9 +27,15 @@ body {
   width: auto;
   flex: 1;
   border-radius: var(--border-radius) 0 0 var(--border-radius);
-  border: solid black 4px;
+  border: solid black 3px;
   border-right: none;
-  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+
+  transition: transform 300ms;
+}
+
+#instagram:active {
+  transform: scale(0.9);
 }
 
 #info {
@@ -45,9 +51,89 @@ body {
   margin-bottom: -0.5rem;
 }
 
+#logo.skew {
+  animation: skewAnimation 600ms;
+}
+
+@keyframes skewAnimation {
+  0% {
+    transform: scale(0.8, 0.8) skew(0deg);
+  }
+  35% {
+    transform: scale(5, 0.03) skew(-75deg);
+  }
+  80% {
+    transform: scale(0.85, 0.85) skew(0deg);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
 #title {
   margin: 0;
   font-size: var(--text-lg);
+}
+
+.type-line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.type-line.line1 {
+  border-right: 2px solid black;
+  animation:
+    typing1 0.3s steps(8) forwards,
+    cursorOff 0s forwards;
+  animation-delay: 0.3s, 0.6s;
+}
+
+.type-line.line2 {
+  border-right: 2px solid black;
+  border-right-color: transparent;
+  animation:
+    cursorOn 0s forwards,
+    typing2 0.6s steps(18) forwards,
+    blink 1s infinite;
+  animation-delay: 0.6s, 0.6s, 1.2s;
+}
+
+@keyframes typing1 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 6ch;
+  }
+}
+
+@keyframes typing2 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 12.9ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes cursorOff {
+  to {
+    border-color: transparent;
+  }
+}
+
+@keyframes cursorOn {
+  to {
+    border-color: black;
+  }
 }
 
 #contact {
@@ -59,11 +145,23 @@ body {
 #instagram {
   width: 32px;
   height: 32px;
+
+  transition: transform 300ms;
+}
+
+#instagram:active {
+  transform: scale(0.9);
 }
 
 #gmail {
   text-decoration: none;
   color: inherit;
+
+  transition: transform 300ms;
+}
+
+#gmail:active {
+  transform: scale(0.9);
 }
 
 @media (min-width: 768px) {
@@ -78,8 +176,20 @@ body {
 
   #works {
     margin-right: 0;
-    border-right: solid black 4px;
+    border-right: solid black 3px;
     border-radius: var(--border-radius);
     height: calc(100vh - 8rem);
+  }
+
+  #works:hover {
+    transform: scale(1.02);
+  }
+
+  #instagram:hover {
+    transform: scale(1.2);
+  }
+
+  #gmail:hover {
+    transform: scale(1.1);
   }
 }
